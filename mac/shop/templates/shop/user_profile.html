@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+
+  font-size: 18px;
+}
+
+#btn1 {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+#btn1:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+<h2 style="text-align:center">My Profile</h2>
+<form action="../updatePro/" method="POST">
+  {% csrf_token %}
+<div class="card">
+  <img src="{% static 'shop\images\profile_pic.png' %}" alt="John" style="width:100%">
+  <input type="hidden" name=cid value="{{reg.id}}">
+  <p>User Name{{form.username}}</p>
+  <p>Mobile{{form.mobile}}</p>
+  <p>Email{{form.email}}</p>
+  <input type="hidden" name=password value="{{reg.password}}">
+  <p><input id=btn1 onclick="fun3()" type="submit" value="Save"></p>
+</div>
+</form>
+<<script type="text/javascript">
+  function fun3(){
+    window.confirm("Do You Really Want to Make Changes !")
+  }
+</script>
+</body>
+</html>
